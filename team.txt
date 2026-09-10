@@ -13,13 +13,13 @@ with all your changes. After that we are going to merge all the changes to the m
 
 In other words:
     - In Trello we are going to track the work we are doing
-    - In Github, you are going to create and use a branch called initials--feature-[your name] to work during the week and then when your
+    - In Github, you are going to create and use a new branch using your name or initials and you will work during the week in that branch. When your
       work is finished you will create a pull request to the main branch so that after review, the code can be marged (added) to the main branch.
+      After your pull request has been accepted or closed, you are free to delete that branch that you created for that week.
     - Render is going to be use to publish the site from the main branch
 
 #LINKS
 -Github | main Branch: https://github.com/baironcayetano/WDD-330---Team-08/tree/main
--Github | Your Branch: https://github.com/baironcayetano/WDD-330---Team-08/tree/initials--feature-[your name]
 -Trello:
     - Join: https://trello.com/invite/b/6aa1feb18097e1c541a32b21/ATTI03d3307c40702a92fcf51bc40ab8a5442CC0949F/sleep-outside-team-08 
     - Edit: https://trello.com/b/a0BAVdnl/sleep-outside-team-08
