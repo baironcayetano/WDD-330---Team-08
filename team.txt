@@ -19,7 +19,7 @@ In other words:
 
 #LINKS
 -Github | main Branch: https://github.com/baironcayetano/WDD-330---Team-08/tree/main
--Github | Pre-release Branch: https://github.com/baironcayetano/WDD-330---Team-08/tree/pre-release
+-Github | Your Branch: https://github.com/baironcayetano/WDD-330---Team-08/tree/initials--feature-[your name]
 -Trello:
     - Join: https://trello.com/invite/b/6aa1feb18097e1c541a32b21/ATTI03d3307c40702a92fcf51bc40ab8a5442CC0949F/sleep-outside-team-08 
     - Edit: https://trello.com/b/a0BAVdnl/sleep-outside-team-08
