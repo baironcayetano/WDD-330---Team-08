@@ -29,3 +29,18 @@ export function getParam(param){
   const urlParam = urlParams.get(param);
   return urlParam;
 }
+
+/**Renders the list elements using the given template
+ * @param templateFunc {function}
+ * @param parentElement {HTMLElement}
+ * @param list {Array}
+ * @param position {"afterbegin" | "beforebegin" | "beforeend" | "afterend"}
+ * @param clear {boolean}
+ */
+export function renderListWithTemplate(templateFunc, parentElement, list, position="afterbegin", clear=false){
+    if(clear){
+      parentElement.innerHTML = "";
+    }
+    const content = list.map(element => templateFunc(element)).join();
+    parentElement.insertAdjacentHTML(position,content);
+}
