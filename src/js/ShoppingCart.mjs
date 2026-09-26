@@ -17,18 +17,34 @@ function shoppingCartTemplate (item){
     return cartItem;
 };
 
+function cartTotalTemplate (cart){
+    let total = 0;
+    cart.forEach(item =>{
+        total += item.FinalPrice;
+    });
+
+    const totalTemplate = `<p class="cart-total"> Total: $${total.toFixed(2)}</p>`;
+    return totalTemplate;
+}
+
 export default class ShoppingCart{
-    constructor(querySelector){
+    constructor(parentElementQuerySelector, totalElementQuerySelector){
         this.cart = getLocalStorage("so-cart");
-        this.parentElement = document.querySelector(querySelector);
+        this.parentElement = document.querySelector(parentElementQuerySelector);
+        this.totalElement = document.querySelector(totalElementQuerySelector);
     }
 
     init(){
         this.renderCart();
+        if(this.cart.length > 0){ this.renderTotal(); }
     }
 
     renderCart(){
         renderListWithTemplate(shoppingCartTemplate, this.parentElement, this.cart);
+    }
+
+    renderTotal(){
+        this.totalElement.innerHTML = cartTotalTemplate(this.cart);
     }
 
     
