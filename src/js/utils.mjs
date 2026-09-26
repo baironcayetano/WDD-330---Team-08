@@ -44,3 +44,51 @@ export function renderListWithTemplate(templateFunc, parentElement, list, positi
     const content = list.map(element => templateFunc(element)).join();
     parentElement.insertAdjacentHTML(position,content);
 }
+
+/**Renders with the given template and data
+ * @param {string}template
+ * @param {HTMLElement} parentElement 
+ * @param {any} data
+ * @param {Function} callback
+ */
+export function renderWithTemplate(template, parentElement, data, callback){
+    parentElement.innerHTML = template;
+    if(callback){
+      callback(data);
+    }
+}
+
+/** Retrieves the template from the given path
+ * @param {string} path
+ * @returns {string | null}
+ */
+export async function loadTemplate(path){
+  try{
+      const res = await fetch(path);
+      const template = await res.text();
+      return template;
+  }catch(error){
+      return null; 
+  }
+}
+
+/** Inserts the header and the footer */
+export async function loadHeaderFooter(){
+  const header = document.getElementById("main-header");
+  const footer = document.getElementById("main-footer");
+
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+
+  if(!headerTemplate){
+    console.error("Error rendering header") 
+    return;
+  } else if (!footerTemplate){
+    console.error("Error rendering footer");
+    return;
+  }
+
+  renderWithTemplate(headerTemplate, header);
+  renderWithTemplate(footerTemplate, footer);
+
+}
