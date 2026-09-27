@@ -3,5 +3,5 @@ import ShoppingCart from "./ShoppingCart.mjs";
 
 loadHeaderFooter();
 
-const shoppingCart = new ShoppingCart(".product-list","#cart-total");
+const shoppingCart = new ShoppingCart(".product-list", "#cart-total");
 shoppingCart.init();
