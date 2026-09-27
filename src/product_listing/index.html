@@ -14,7 +14,7 @@
       <div class="hero">
         <img
           src="/images/banner-sm.jpg"
-          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+          srcset="/images/banner-sm.jpg 500w, /images/banner.jpg"
           alt="image of a high mountain lake"
         />
         <div class="logo logo--square">
@@ -30,7 +30,49 @@
       </div>
 
       <section class="products">
-        <h2>Top Products</h2>
+        <h2>Categories</h2>
+        <ul class="product-list" id="categories">
+          <li class="product-card">
+            <a href="/product_listing/?category=tents">
+              <img
+                src="/images/categories/tents.svg"
+                alt="Image of tents category"
+              />
+              <h3 class="card__name">Tents</h3>
+            </a>
+          </li>
+          <li class="product-card">
+            <a href="/product_listing/?category=sleeping-bags">
+              <img
+                src="/images/categories/sleepingbags.svg"
+                alt="Image of sleeping bags category"
+              />
+              <h3 class="card__name">Sleeping Bags</h3>
+            </a>
+          </li>
+          <li class="product-card">
+            <a href="/product_listing/?category=hammocks">
+              <img
+                src="/images/categories/hammocks.svg"
+                alt="Image of hammocks category"
+              />
+              <h3 class="card__name">Hammocks</h3>
+            </a>
+          </li>
+          <li class="product-card">
+            <a href="/product_listing/?category=backpacks">
+              <img
+                src="/images/categories/backpacks.svg"
+                alt="Image of backpacks category"
+              />
+              <h3 class="card__name">Backpacks</h3>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="products">
+        <h2 id="products-title">Top Products</h2>
         <ul class="product-list" id="top-products"></ul>
       </section>
     </main>
