@@ -37,7 +37,7 @@ header {
 }
 
 p {
-  padding: 0.75rem;
+  padding: 0.5rem;
 }
 
 .logo {
@@ -189,6 +189,19 @@ button {
 
 .card__name {
   font-size: 1em;
+}
+
+.card__suggested-retail-price {
+  text-decoration: line-through;
+  text-decoration-color: red;
+  text-decoration-thickness: 2px;
+}
+
+.card__discount {
+  background-color: goldenrod;
+  color: black;
+  padding: 5px;
+  text-align: center;
 }
 
 /* End product list card */
