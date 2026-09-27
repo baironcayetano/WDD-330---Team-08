@@ -25,7 +25,12 @@ function cartTotalTemplate (cart){
 
     const totalTemplate = `<p class="cart-total"> Total: $${total.toFixed(2)}</p>`;
     return totalTemplate;
-}
+};
+
+function emptyCartTemplate(){
+   const template = `<p class="cart-total">There is nothing in your shopping cart!</p>`;
+   return template;
+};
 
 export default class ShoppingCart{
     constructor(parentElementQuerySelector, totalElementQuerySelector){
@@ -35,8 +40,14 @@ export default class ShoppingCart{
     }
 
     init(){
-        this.renderCart();
-        if(this.cart.length > 0){ this.renderTotal(); }
+	//for empty shopping carts
+	if(!this.cart || this.cart.lenght <= 0){
+	   this.renderEmptyCart();
+	   return
+	} 
+
+	this.renderCart();
+	this.renderTotal();
     }
 
     renderCart(){
@@ -47,5 +58,7 @@ export default class ShoppingCart{
         this.totalElement.innerHTML = cartTotalTemplate(this.cart);
     }
 
-    
+    renderEmptyCart(){
+	this.parentElement.innerHTML = emptyCartTemplate();
+    }
 } 

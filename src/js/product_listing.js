@@ -8,6 +8,7 @@ const productsTitle = document.querySelector("#products-title");
 const category = getParam("category") || "tents";
 productsTitle.textContent = `Top Products: ${category}`;
 
+//Renders the products
 const listElement = document.querySelector("#top-products");
 const dataSource = new ProductData(category);
 const list = new ProductList(category, dataSource, listElement);
