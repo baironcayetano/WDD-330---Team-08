@@ -23,6 +23,9 @@ export default class ProductDetails {
         const products = getLocalStorage("so-cart") || [];
         products.push(this.product);
         setLocalStorage("so-cart", products);
+
+	//alert the user
+	alert(`${this.product.Brand.Name} has been added to your cart`);
         
         //shows the quantity of items in the shopping cart
         //in the cart icon in the header element
@@ -35,13 +38,21 @@ export default class ProductDetails {
         const productDetails = document.querySelector(".product-detail");
 
         const cloneNode = productTemplate.content.cloneNode(true);
-        const [brandName, productName, image, price, color, description] = cloneNode.querySelectorAll("h3, h2, img, p, p, p");
+        const [brandName, productName, image, price, retailPrice, discount, color, description] = cloneNode.querySelectorAll("h3, h2, img, p, p, p");
 
         brandName.textContent = this.product.Brand.Name;
         productName.textContent = this.product.NameWithoutBrand;
         image.alt = this.product.NameWithoutBrand;
         image.src = this.product.Images.PrimaryLarge;
         price.textContent = `$${this.product.FinalPrice}`;
+	
+	//showing discounts and discount percentages if there is any
+	if(this.product.FinalPrice < this.product.SuggestedRetailPrice){
+	  const discountPercentage = parseInt((this.product.FinalPrice / this.product.SuggestedRetailPrice) * 100);
+	  retailPrice.textContent = ` $${this.product.SuggestedRetailPrice}`;
+	  discount.textContent = `${discountPercentage}% OFF!`;
+	}
+	
         color.textContent = this.product.Colors[0].ColorName;
         description.innerHTML = this.product.DescriptionHtmlSimple;
         productDetails.appendChild(cloneNode);
