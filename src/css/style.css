@@ -118,9 +118,10 @@ button {
 
 /* Cart icon styles */
 .cart {
-  padding-top: 1em;
-  position: relative;
+  align-self: center;
   text-align: center;
+  text-decoration: none;
+  display: flex;
 }
 
 .cart svg {
@@ -129,6 +130,21 @@ button {
 
 .cart:hover svg {
   fill: gray;
+}
+
+.cart > a {
+  display: flex;
+  position: relative;
+}
+.cart > a > span {
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  background-color: goldenrod;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 100%;
+  font-size: 12px;
 }
 
 /* End cart icon styles */
