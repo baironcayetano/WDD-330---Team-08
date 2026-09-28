@@ -199,6 +199,13 @@ button {
   margin: 0.5em 0;
 }
 
+.product__discount {
+  background-color: goldenrod;
+  color: white;
+  width: max-content;
+  font-weight: bold;
+}
+
 .card__brand {
   font-size: var(--small-font);
 }

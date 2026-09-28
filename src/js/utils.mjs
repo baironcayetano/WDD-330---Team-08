@@ -75,7 +75,7 @@ export async function loadTemplate(path){
 /** Insert number of items in cart **/
 export function loadItemsInCart(){
   const items = getLocalStorage("so-cart") || null;
-  const count = items.length || 0;
+  const count = items ? items.length : 0;
   const counterElement = document.getElementById("items-in-cart");
   counterElement.textContent = count;
 };
