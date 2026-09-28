@@ -68,9 +68,17 @@ export async function loadTemplate(path){
       const template = await res.text();
       return template;
   }catch(error){
-      return null; 
+      return null;
   }
 }
+
+/** Insert number of items in cart **/
+export function loadItemsInCart(){
+  const items = getLocalStorage("so-cart") || null;
+  const count = items.length || 0;
+  const counterElement = document.getElementById("items-in-cart");
+  counterElement.textContent = count;
+};
 
 /** Inserts the header and the footer */
 export async function loadHeaderFooter(){
@@ -91,4 +99,9 @@ export async function loadHeaderFooter(){
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
 
-}
+  //show the quantity of items in the shopping cart
+  //over the cart icon in the header element.
+  loadItemsInCart();
+};
+
+

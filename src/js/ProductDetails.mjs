@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs"
+import { getLocalStorage, setLocalStorage, loadItemsInCart } from "./utils.mjs"
 
 export default class ProductDetails {
     constructor(productId, dataSource){
@@ -23,6 +23,10 @@ export default class ProductDetails {
         const products = getLocalStorage("so-cart") || [];
         products.push(this.product);
         setLocalStorage("so-cart", products);
+        
+        //shows the quantity of items in the shopping cart
+        //in the cart icon in the header element
+        loadItemsInCart();
     }
 
     /**Method to generate or populate the HTML to display the product details. */
