@@ -20,6 +20,7 @@ export default class ProductDetails {
 
     /** Adds a product to cart */
     addProductToCart(){
+        //NOTE: This part will have to use a Map to avoid duplicates.
         const products = getLocalStorage("so-cart") || [];
         products.push(this.product);
         setLocalStorage("so-cart", products);

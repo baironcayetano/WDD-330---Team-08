@@ -1,4 +1,4 @@
-import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, renderListWithTemplate, addFunctionalityToButtons } from "./utils.mjs";
 
 function shoppingCartTemplate (item){
     const cartItem = `
@@ -7,8 +7,7 @@ function shoppingCartTemplate (item){
 	<h2 class="card__name">${item.Name}</h2>
    </a>
     <div class="cart-card__header">
-      <button class="cart-card__delete" data-productId="${item.Id}"
-  id="delete-button">X</button>
+      <button class="cart-card__delete delete-button" id="${item.Id}">X</button>
     </div>
     <a href="#" class="cart-card__image">
     <img
@@ -37,6 +36,39 @@ function emptyCartTemplate(){
    return template;
 };
 
+/**
+ * Deletes an item from the shopping cart
+ * @param {Event} clickEvent 
+ */
+function deleteItemFromCart(clickEvent){
+    const productId = clickEvent.target.id;
+    
+    //It should work and retreive the productId from the dataset
+    // but this is the safest way to get to handle errors and avoid unexpected behaviors.
+    if(!productId){
+        //notify the user
+        alert("Something went wrong. Please try again.");
+        return;
+    } 
+
+    const cart = getLocalStorage("so-cart");
+
+    //This is not the way to do it but it works for now.
+    //The best way is using a Map and check if the quantity of the product is 
+    //greater than 1, if so, decrease the quantity by 1,
+    //otherwise, remove the product from the cart.
+    const newCart = cart.filter(item => item.Id !== productId);
+    setLocalStorage("so-cart", newCart);
+
+    //notify the user
+    alert("This item has been removed from your cart");
+
+    //re-render the cart and the total
+    const newShoppingCart = new ShoppingCart(".product-list","#cart-total");
+    newShoppingCart.init();
+    
+}
+
 export default class ShoppingCart{
     constructor(parentElementQuerySelector, totalElementQuerySelector){
         this.cart = getLocalStorage("so-cart");
@@ -46,7 +78,7 @@ export default class ShoppingCart{
 
     init(){
 	//for empty shopping carts
-	if(!this.cart || this.cart.lenght <= 0){
+	if(!this.cart || this.cart.length <= 0){
 	   this.renderEmptyCart();
 	   return
 	} 
@@ -56,7 +88,8 @@ export default class ShoppingCart{
     }
 
     renderCart(){
-        renderListWithTemplate(shoppingCartTemplate, this.parentElement, this.cart);
+        renderListWithTemplate(shoppingCartTemplate, this.parentElement, this.cart, true);
+        addFunctionalityToButtons(".delete-button", deleteItemFromCart);
     }
 
     renderTotal(){
@@ -65,5 +98,7 @@ export default class ShoppingCart{
 
     renderEmptyCart(){
 	this.parentElement.innerHTML = emptyCartTemplate();
+    this.totalElement.innerHTML = "";
     }
+
 } 
