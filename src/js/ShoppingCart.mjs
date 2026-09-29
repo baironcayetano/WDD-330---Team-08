@@ -1,14 +1,19 @@
 import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 function shoppingCartTemplate (item){
-    const cartItem = `<li class="cart-card divider">
+    const cartItem = `
+  <li class="cart-card divider">
+    <a href="/product_pages/?product=${item.Id}">
+	<h2 class="card__name">${item.Name}</h2>
+   </a>
+    <div class="cart-card__header">
+      <button class="cart-card__delete" data-productId="${item.Id}"
+  id="delete-button">X</button>
+    </div>
     <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryLarge}"
       alt="${item.Name}"/>
-    </a>
-    <a href="#">
-        <h2 class="card__name">${item.Name}</h2>
     </a>
         <p class="cart-card__color">${item.Colors[0].ColorName}</p>
         <p class="cart-card__quantity">qty: 1</p>
