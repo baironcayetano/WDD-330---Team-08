@@ -37,7 +37,7 @@ export function getParam(param){
  * @param position {"afterbegin" | "beforebegin" | "beforeend" | "afterend"}
  * @param clear {boolean}
  */
-export function renderListWithTemplate(templateFunc, parentElement, list, position="afterbegin", clear=false){
+export function renderListWithTemplate(templateFunc, parentElement, list, clear=false, position="afterbegin"){
     if(clear){
       parentElement.innerHTML = "";
     }
@@ -103,5 +103,18 @@ export async function loadHeaderFooter(){
   //over the cart icon in the header element.
   loadItemsInCart();
 };
+
+/** Selects buttons by ID and adds functionality to them
+ * @param {string} query The Id / class of the button in a query form.
+ * @param {function} callback The function to be called when the button is clicked
+ * @returns {void} 
+ */
+export function addFunctionalityToButtons(query,callback){
+    const deleteButtons = document.querySelectorAll(query);
+    if(!deleteButtons || deleteButtons.length <= 0) return;
+
+    //uses setClick to support both touch and click events
+    deleteButtons.forEach(button => { setClick(`[id="${button.id}"]`, callback)});
+}
 
 
