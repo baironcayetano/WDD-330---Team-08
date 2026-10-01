@@ -301,6 +301,21 @@ button {
   grid-column: 3;
 }
 
+/** alerts **/
+.alert-list__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.alert-list__close {
+  margin: 5px 10px 0 0;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
