@@ -7,7 +7,7 @@ function shoppingCartTemplate (item){
 	<h2 class="card__name">${item.Name}</h2>
    </a>
     <div class="cart-card__header">
-      <button class="cart-card__delete delete-button" id="${item.Id}">X</button>
+      <button class="cart-card__delete delete-button" id="${item.Id}">&times;</button>
     </div>
     <a href="#" class="cart-card__image">
     <img
@@ -66,6 +66,8 @@ function deleteItemFromCart(clickEvent){
     //re-render the cart and the total
     const newShoppingCart = new ShoppingCart(".product-list","#cart-total");
     newShoppingCart.init();
+
+    //TODO: show the quantity of items in the bag Icon
     
 }
 
